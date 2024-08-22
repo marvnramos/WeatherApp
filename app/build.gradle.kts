@@ -50,8 +50,6 @@ android {
 }
 
 dependencies {
-    implementation("androidx.compose.material:material-icons-extended:1.4.3")
-    implementation("com.google.android.material:material:1.6.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -62,6 +60,12 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation("androidx.compose.material:material-icons-extended:1.4.3")
+
+    // Location dependencies
+    implementation(libs.play.services.location)
+    implementation ("com.google.android.gms:play-services-location:21.0.1")
+
 
     // Testing dependencies
     testImplementation(libs.junit)
