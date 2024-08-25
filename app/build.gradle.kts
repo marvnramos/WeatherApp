@@ -55,6 +55,18 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
 
+    // Retrofit for API requests
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
+    // ViewModel and LiveData for MVVM architecture
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.lifecycle.livedata)
+    implementation(libs.hilt.android)
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.2")
+
+    implementation("io.coil-kt:coil-compose:2.4.0")
+    implementation("io.coil-kt:coil-compose:2.7.0")
     // UI dependencies
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
@@ -64,7 +76,8 @@ dependencies {
 
     // Location dependencies
     implementation(libs.play.services.location)
-    implementation ("com.google.android.gms:play-services-location:21.0.1")
+    implementation("com.google.android.gms:play-services-location:21.0.1")
+    implementation(libs.androidx.runtime.livedata)
 
 
     // Testing dependencies
