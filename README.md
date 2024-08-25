@@ -58,5 +58,5 @@ Video ilustrativo: [Clic aquí ✨](https://ufgedu-my.sharepoint.com/:v:/g/perso
 
 ¡Disfruta usando WeatherApp!
 
-Citations:
-[1] https://github.com/marvnramos/WeatherApp.git
+By Marvin Ramos
+@marvnramos
