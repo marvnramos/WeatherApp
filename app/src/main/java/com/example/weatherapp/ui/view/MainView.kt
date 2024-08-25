@@ -1,12 +1,12 @@
 package com.example.weatherapp.ui.view
 
+import CardComponent
 import TopBarComponent
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -19,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -31,7 +32,9 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.weatherapp.R
+import com.example.weatherapp.data.models.CardData
 import com.example.weatherapp.ui.viewmodel.WeatherViewModel
+import com.example.weatherapp.utils.getCelciusFromKelvin
 import com.example.weatherapp.utils.hexToColorInt
 
 
@@ -77,12 +80,38 @@ fun MainActivity(viewModel: WeatherViewModel = viewModel()) {
                         if (it.isLowerCase()) it.titlecase() else it.toString()
                     }
 
+                    val celciusDegree = getCelciusFromKelvin(weather!!.main.temp)
+                    val min = getCelciusFromKelvin(weather!!.main.temp_min)
+                    val max = getCelciusFromKelvin(weather!!.main.temp_max)
+                    val humidity = weather!!.main.humidity
+
+                    val cardData = CardData(
+                        minTemp = "$min°C",
+                        maxTemp = "$max°C",
+                        humidity = "$humidity%",
+                    )
+
+                    Text(
+                        text = "${weather!!.name}, ${weather!!.sys.country}",
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.padding(8.dp),
+                    )
                     Image(
                         painter = painterResource(id = R.drawable.day_rain),
                         contentDescription = ""
                     )
 
-                    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
+                    Column(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Text(
+                            text = "${celciusDegree}°C",
+                            fontSize = 30.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                        Spacer(modifier = Modifier.padding(8.dp))
                         Text(
                             text = weatherDescription,
                             modifier = Modifier
@@ -101,6 +130,9 @@ fun MainActivity(viewModel: WeatherViewModel = viewModel()) {
                             fontSize = 24.sp,
                             color = Color.White
                         )
+                        Spacer(modifier = Modifier.padding(16.dp))
+
+                        CardComponent(cardData)
                     }
                 }
             }
