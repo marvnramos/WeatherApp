@@ -51,7 +51,7 @@ buildConfigField("String", "API_BASE_URL", "\"https://api.example/v1/\"")
 
 ## Anexos
 
-
+![Texto alternativo de la imagen](./Screenshot_20240825_012600.png)
 
 ¡Disfruta usando WeatherApp!
 
