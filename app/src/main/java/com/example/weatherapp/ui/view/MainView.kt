@@ -42,7 +42,7 @@ import com.example.weatherapp.utils.hexToColorInt
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Preview
 @Composable
-fun MainActivity(viewModel: WeatherViewModel = viewModel()) {
+fun MainView(viewModel: WeatherViewModel = viewModel()) {
     val text = remember { MutableLiveData("es") }
     val weather by viewModel.weatherResponse.observeAsState()
     val isLoading by viewModel.isLoading.observeAsState(true)
