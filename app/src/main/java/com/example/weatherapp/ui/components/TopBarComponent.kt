@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -39,7 +38,8 @@ import kotlinx.coroutines.delay
 @Composable
 fun TopBarComponent(
     text: MutableLiveData<String>,
-    onLanguageChanged: () -> Unit = {}
+    onLanguageChanged: () -> Unit = {},
+    timeOver: () -> Unit = {}
 ) {
     val context = LocalContext.current
     var timerValue by remember { mutableIntStateOf(10) }
@@ -52,6 +52,7 @@ fun TopBarComponent(
             if (timerValue == 0) {
                 timerValue = 10
                 timerRunning = true
+                timeOver()
             }
         }
     }
