@@ -19,7 +19,7 @@ fun CardComponent(data: CardData) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
-            .height(100.dp),
+            .height(150.dp),
         colors = CardDefaults.cardColors(Color.White),
         shape = RoundedCornerShape(16.dp),
         elevation = CardDefaults.cardElevation(10.dp),
