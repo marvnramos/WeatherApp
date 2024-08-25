@@ -40,8 +40,8 @@ class WeatherViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 val data = RetrofitInstance.ApiClient.getWeather(
-                    lat = 35.0,
-                    lon = 139.0,
+                    lat = 13.68935,
+                    lon = -89.18718,
                     apiKey = API_KEY,
                     language = _language.value ?: "es"
                 )
