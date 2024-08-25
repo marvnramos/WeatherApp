@@ -18,6 +18,11 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+        buildConfigField("String", "API_KEY", "\"1234abcd1234\"")
+        buildConfigField("String", "API_BASE_URL", "\"https://api.example/v1/\"")
+    }
+    buildFeatures {
+        buildConfig = true
     }
 
     buildTypes {
@@ -50,18 +55,36 @@ android {
 }
 
 dependencies {
-    implementation("androidx.compose.material:material-icons-extended:1.4.3")
-    implementation("com.google.android.material:material:1.6.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
+    implementation ("androidx.compose.material:material-icons-extended:1.4.0")
 
+    // Retrofit for API requests
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
+    // ViewModel and LiveData for MVVM architecture
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.lifecycle.livedata)
+    implementation(libs.hilt.android)
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.2")
+
+    implementation("io.coil-kt:coil-compose:2.4.0")
+    implementation("io.coil-kt:coil-compose:2.7.0")
     // UI dependencies
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation("androidx.compose.material:material-icons-extended:1.4.3")
+
+    // Location dependencies
+    implementation(libs.play.services.location)
+    implementation("com.google.android.gms:play-services-location:21.0.1")
+    implementation(libs.androidx.runtime.livedata)
+
 
     // Testing dependencies
     testImplementation(libs.junit)
