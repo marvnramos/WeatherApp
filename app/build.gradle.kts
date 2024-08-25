@@ -18,6 +18,11 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+        buildConfigField("String", "API_KEY", "\"1234abcd1234\"")
+        buildConfigField("String", "API_BASE_URL", "\"https://api.example/v1/\"")
+    }
+    buildFeatures {
+        buildConfig = true
     }
 
     buildTypes {
@@ -54,6 +59,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
+    implementation ("androidx.compose.material:material-icons-extended:1.4.0")
 
     // Retrofit for API requests
     implementation(libs.retrofit)
