@@ -3,6 +3,7 @@ package com.example.weatherapp.ui.view
 import CardComponent
 import TopBarComponent
 import android.annotation.SuppressLint
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -23,6 +24,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -47,6 +49,8 @@ fun MainActivity(viewModel: WeatherViewModel = viewModel()) {
     val isLoading by viewModel.isLoading.observeAsState(true)
     val errorMessage by viewModel.errorMessage.observeAsState()
 
+    val context = LocalContext.current
+
     Scaffold(
         topBar = { },
         floatingActionButton = { },
@@ -58,7 +62,12 @@ fun MainActivity(viewModel: WeatherViewModel = viewModel()) {
                 } else {
                     viewModel.setLanguage("en")
                 }
-            })
+            },
+            timeOver = {
+                viewModel.setLanguage("${text.value}")
+                Toast.makeText(context, "reloaded", Toast.LENGTH_SHORT).show()
+            }
+        )
         Column(
             modifier = Modifier
                 .fillMaxSize()
