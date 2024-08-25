@@ -18,7 +18,7 @@ class WeatherViewModel : ViewModel() {
     private val _weatherResponse = MutableLiveData<WeatherResponse?>()
     val weatherResponse: LiveData<WeatherResponse?> = _weatherResponse
 
-    private val _language = MutableLiveData<String>("es") // Idioma por defecto
+    private val _language = MutableLiveData<String>("es")
     val language: LiveData<String> = _language
 
     private val _isLoading = MutableLiveData(true)
