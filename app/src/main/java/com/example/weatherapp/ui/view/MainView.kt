@@ -25,7 +25,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -33,10 +32,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.weatherapp.R
 import com.example.weatherapp.data.models.CardData
 import com.example.weatherapp.ui.viewmodel.WeatherViewModel
 import com.example.weatherapp.utils.getCelciusFromKelvin
+import com.example.weatherapp.utils.getWeatherImages
 import com.example.weatherapp.utils.hexToColorInt
 
 
@@ -107,7 +106,7 @@ fun MainActivity(viewModel: WeatherViewModel = viewModel()) {
                         modifier = Modifier.padding(8.dp),
                     )
                     Image(
-                        painter = painterResource(id = R.drawable.day_rain),
+                        painter = getWeatherImages(weatherDescription),
                         contentDescription = ""
                     )
 
